@@ -1,36 +1,139 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+# Mini Task Board
+
+A simple full-stack task management application built as part of a Full Stack Developer Intern practical assessment.
+
+
+The application allows users to:
+
+- View all tasks
+- Create new tasks
+- Set or update a task status
+- Handle loading and error states
+
+## Tech Stack
+
+- Next.js
+- React.js
+- TypeScript
+- Node.js
+- MySQL
+
+## Project Structure
+
+mini-task-board/
+├── app/
+│   ├── api/
+│   │   └── tasks/
+│   │       ├── route.ts
+│   │       └── [id]/
+│   │           └── route.ts
+│   ├── page.tsx
+│   ├── layout.tsx
+│   └── globals.css
+├── lib/
+│   └── db.ts
+├── types/
+│   └── task.ts
+├── database/
+│   └── schema.sql
+├── .env.local
+├── .gitignore
+├── package.json
+└── README.md
+
+## Backend Approach
+
+I used Next.js API Routes for the backend instead of a separate Express server.
+
+## Features
+Create Tasks
+Users can create a task by entering a title and selecting a status.
+
+Available statuses:
+-To-do
+-Ongoing
+-Done
+
+Task titles cannot be empty.
+
+View Tasks
+Tasks are retrieved from the MySQL database and displayed on the main page.
+
+Update Task Status
+Users can change the status of an existing task directly from the task list.
+
+Validation
+Input validation is performed on both the frontend and backend.
+
+The backend validates:
+
+-Task title is not empty
+-Task status is valid
+-Task ID is valid
+-Loading and Error States
+
+The application handles:
+
+-Loading tasks
+-Adding a task
+-Updating a task
+-API/database errors
+-Empty task lists
+
+## Database
+The application uses MySQL with a single tasks table containing:
+
+Column     |	Type	 |  Description
+----------------------------------------------
+id	       |    INT      |  Primary key
+title      |VARCHAR(255) |  Task title
+status     |   ENUM	     |  Task status
+created_at |  TIMESTAMP  |  Task creation time
+
+The database schema is available at:
+database/schema.sql
+
+
+## Create a .env.local file in the project root:
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+DB_NAME=mini_task_board
+DB_PORT=3306
+
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
+git clone https://github.com/nushka08/mini-task-board
+cd mini-task-board
 
-```bash
+2. Install dependencies
+npm install
+
+3. Set up the MySQL database
+
+Open MySQL Workbench and run:
+database/schema.sql
+
+4. Replace .env.local in the project root and add:
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+DB_NAME=mini_task_board
+DB_PORT=3306
+
+5. Start the server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Author
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+** Anushka Mishra **
+Linkedin: https://linkedin.com/in/anushka-mishra-
+GitHub: https://github.com/nushka08
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
