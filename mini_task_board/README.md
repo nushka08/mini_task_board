@@ -1,9 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 # Mini Task Board
 
-A simple full-stack task management application built as part of a Full Stack Developer Intern practical assessment.
-
+A simple full-stack task management application.
 
 The application allows users to:
 
